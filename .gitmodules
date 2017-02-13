@@ -1,0 +1,3 @@
+[submodule "simple-prepaid-card"]
+	path = simple-prepaid-card
+	url = git@github.com:lzakrzewski/simple-prepaid-card.git

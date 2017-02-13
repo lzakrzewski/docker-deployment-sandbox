@@ -1,0 +1,21 @@
+php:
+  container_name: php
+  build: .
+  dockerfile: dockerfiles/php_ubuntu_16_04.dockerfile
+  command: php -S 0.0.0.0:8000 -t /simple-prepaid-card
+  links:
+    - sqlite
+    - redis
+  ports:
+    - "8000:8000"
+  volumes:
+    - ./simple-prepaid-card:/simple-prepaid-card
+
+sqlite:
+  container_name: sqlite
+  build: .
+  dockerfile: dockerfiles/sqlite_ubuntu_16_04.dockerfile
+
+redis:
+  container_name: redis
+  image: redis
