@@ -19,6 +19,7 @@ php:
   volumes:
     - ./simple-prepaid-card:/simple-prepaid-card
     - ./configuration/www.conf:/etc/php/7.0/fpm/pool.d/www.conf
+    - ~/.composer:/tmp/composer
 
 sqlite:
   container_name: sqlite
