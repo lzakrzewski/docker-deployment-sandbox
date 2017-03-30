@@ -1,15 +1,24 @@
-php:
-  container_name: php
-  build: .
-  dockerfile: dockerfiles/php_ubuntu_16_04.dockerfile
-  command: php -S 0.0.0.0:8000 -t /simple-prepaid-card
-  links:
-    - sqlite
-    - redis
+nginx:
+  container_name: nginx
+  image: nginx
   ports:
     - "8000:8000"
   volumes:
     - ./simple-prepaid-card:/simple-prepaid-card
+    - ./configuration/nginx.conf:/etc/nginx/conf.d/nginx.conf
+  links:
+      - php
+
+php:
+  container_name: php
+  build: .
+  dockerfile: dockerfiles/php_ubuntu_16_04.dockerfile
+  links:
+    - sqlite
+    - redis
+  volumes:
+    - ./simple-prepaid-card:/simple-prepaid-card
+    - ./configuration/www.conf:/etc/php/7.0/fpm/pool.d/www.conf
 
 sqlite:
   container_name: sqlite
