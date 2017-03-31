@@ -1,4 +1,5 @@
 parameters:
     database_path: "%kernel.root_dir%/../var/db/simple_prepaid_card.db"
     secret: ThisTokenIsNotSoSecretChangeIt
-    redis_address: "%env(REDIS_PORT_6379_TCP)%"
+    redis_host: "%env(REDIS_HOST)%"
+    redis_port: "%env(REDIS_PORT)%"
