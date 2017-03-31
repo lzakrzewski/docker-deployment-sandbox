@@ -9,4 +9,10 @@ RUN chmod +x /usr/bin/composer
 ARG COMPOSER_HOME=/tmp/composer
 ENV COMPOSER_HOME ${COMPOSER_HOME}
 
+RUN usermod -u 1000 www-data
+RUN chown -R www-data:www-data /simple-prepaid-card/var/cache
+RUN chown -R www-data:www-data /simple-prepaid-card/var/db
+RUN chown -R www-data:www-data /simple-prepaid-card/var/logs
+RUN chown -R www-data:www-data /simple-prepaid-card/var/sessions
+
 WORKDIR /simple-prepaid-card
