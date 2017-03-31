@@ -5,26 +5,21 @@ nginx:
     - "8000:8000"
   volumes:
     - ./simple-prepaid-card:/simple-prepaid-card
-    - ./configuration/nginx.conf:/etc/nginx/conf.d/nginx.conf
+    - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
   links:
-      - php
+      - php-fpm
 
-php:
-  container_name: php
+php-fpm:
+  container_name: php-fpm
   build: .
-  dockerfile: dockerfiles/php_ubuntu_16_04.dockerfile
+  dockerfile: php-fpm/php_fpm.dockerfile
   links:
-    - sqlite
     - redis
   volumes:
     - ./simple-prepaid-card:/simple-prepaid-card
-    - ./configuration/www.conf:/etc/php/7.0/fpm/pool.d/www.conf
+    - ./php-fpm/www.conf:/etc/php/7.0/fpm/pool.d/www.conf
+    - ./php-fpm/setup-permissions.sh:/setup-permissions.sh
     - ~/.composer:/tmp/composer
-
-sqlite:
-  container_name: sqlite
-  build: .
-  dockerfile: dockerfiles/sqlite_ubuntu_16_04.dockerfile
 
 redis:
   container_name: redis
