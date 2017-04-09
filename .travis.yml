@@ -8,6 +8,15 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  - curl -L https://github.com/docker/machine/releases/download/v0.10.0/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine
+  - chmod +x /tmp/docker-machine
+  - sudo mv /tmp/docker-machine /usr/local/bin/docker-machine
+  - "(docker-machine create --driver digitalocean --digitalocean-access-token=$DIGITALOCEAN_ACCESS_TOKEN simple-prepaid-card || true)"
+  - eval "$(docker-machine env simple-prepaid-card)"
 
 script:
-  - make sandbox_up
+  - make deploy
+
+env:
+  global:
+    secure: fokPCC7+3gij1T8w1UNaT3n0FoKP/LwfX4W2yUBXX3BUBthE22HWFs0Hyvf7IofG1/pq6NHeK0A2b6mWDLZkYvQ/dHXDHKHoSD7VUcDt24IXy65TWhXHqAvlMJ4hRa5hsS59wju1LIoNLQGAXSu37xr7sZyaZqIRuOaA8rlNBTMisKSBAaLPrcU6eFEcGY9VLgJB6q19Yai+sPpFIjRX0rfm8lmWmKTvS/IQwpx7DV2xGSwnkbtlDl4bUQNOmMogY1aLIp9rgttZruYWlZw+XWNXZSSRPQRk3yOZabhHoV0wyCNXJdTINNOLGWjdw4MDCNmVJsd+SsJsC9VN4nrSEjBk8zcjTbBMlPyBLUA2PYjGsknU/z8xxo4GPs8MPCT0agO+kY1ArNvB3eHg88RN6I5a8/aB6bdPwos6FWYHKf+j3dTR7ED78fdDNTzxBOI2iVEbTNgY7BhP4ihwTfY7PNsEol9dZJv7q32PDYH+9lcxkZvoaJGoUKLzh01ktY8/iT+BKry8b7D86tt1V00JNQgNTXOpmZO/GSX6ye6FglxjZKFWnGqyrHg2pmbG2YiKfi/Rzpy5xO8IHpm5RyZdy+tlNzyH+7USRE5o5rGA5sHtDcH289xqWOYtUL7AbdvvcHCMJbYWt5gmLEfESqUkSGqppNvE5WRkXSrSiDLddss=
