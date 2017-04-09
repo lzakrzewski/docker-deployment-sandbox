@@ -1,10 +1,10 @@
 # docker-deployment-sandbox [![Build Status](https://travis-ci.org/lzakrzewski/docker-deployment-sandbox.svg?branch=master)](https://travis-ci.org/lzakrzewski/docker-deployment-sandbox)
 
-This is an alternative way to deploy [simple-credit-card](https://github.com/lzakrzewski/simple-credit-card.git) repository.
+This is an alternative way to deploy [simple-prepaid-card](https://github.com/lzakrzewski/simple-prepaid-card) repository.
 Right now [docker-machine](https://docs.docker.com/machine/) was used for deployment purpose.
 
 
-Deployed [simple-credit-card](https://github.com/lzakrzewski/simple-credit-card.git) app is available here: [http://104.131.96.133
+Deployed [simple-prepaid-card](https://github.com/lzakrzewski/simple-prepaid-card) app is available here: [http://104.131.96.133
 ](http://104.131.96.133) 
 
 ## Requirements

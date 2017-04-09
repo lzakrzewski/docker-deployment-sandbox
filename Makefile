@@ -7,5 +7,5 @@ sandbox_up:
 sandbox_down:
 	docker-compose down
 
-deploy:
+deploy: \
 	sandbox_up
