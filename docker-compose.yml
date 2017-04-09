@@ -1,17 +1,6 @@
 version: '3'
 
 services:
-  nginx:
-    container_name: nginx
-    image: nginx
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./simple-prepaid-card:/simple-prepaid-card
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
-    links:
-        - php-fpm
-
   php-fpm:
     container_name: php-fpm
     build:
@@ -20,14 +9,24 @@ services:
     links:
       - redis
     volumes:
-      - ./simple-prepaid-card:/simple-prepaid-card
-      - ./php-fpm/www.conf:/etc/php/7.0/fpm/pool.d/www.conf
-      - ./php-fpm/setup-permissions.sh:/setup-permissions.sh
+      - simple-prepaid-card:/simple-prepaid-card
       - ~/.composer:/tmp/composer
-    environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: nginx/nginx.dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - simple-prepaid-card:/simple-prepaid-card
+    links:
+        - php-fpm
 
   redis:
     container_name: redis
     image: redis
+
+volumes:
+    simple-prepaid-card:
