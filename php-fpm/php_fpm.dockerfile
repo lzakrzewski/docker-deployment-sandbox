@@ -8,9 +8,6 @@ RUN docker-php-ext-install mbstring zip pdo pdo_sqlite
 RUN wget -O /usr/bin/composer https://getcomposer.org/download/1.2.0/composer.phar \
     && chmod +x /usr/bin/composer
 
-ARG COMPOSER_HOME=/tmp/composer
-ENV COMPOSER_HOME ${COMPOSER_HOME}
-
 ENV REDIS_HOST redis
 ENV REDIS_PORT 6379
 
@@ -23,6 +20,5 @@ COPY php-fpm/parameters.yml /simple-prepaid-card/app/config/parameters.yml
 WORKDIR /simple-prepaid-card
 
 RUN composer install -n
-RUN /setup-permissions.sh
 
 EXPOSE 9000

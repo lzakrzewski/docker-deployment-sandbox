@@ -10,7 +10,6 @@ services:
       - redis
     volumes:
       - simple-prepaid-card:/simple-prepaid-card
-      - ~/.composer:/tmp/composer
 
   nginx:
     container_name: nginx
@@ -18,7 +17,7 @@ services:
       context: .
       dockerfile: nginx/nginx.dockerfile
     ports:
-      - "8000:8000"
+      - "80:8000"
     volumes:
       - simple-prepaid-card:/simple-prepaid-card
     links:
