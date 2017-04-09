@@ -4,8 +4,8 @@ This is an alternative way to deploy [simple-prepaid-card](https://github.com/lz
 Right now [docker-machine](https://docs.docker.com/machine/) was used for deployment purpose.
 
 
-Deployed [simple-prepaid-card](https://github.com/lzakrzewski/simple-prepaid-card) app is available here: [http://104.131.96.133
-](http://104.131.96.133) 
+Deployed [simple-prepaid-card](https://github.com/lzakrzewski/simple-prepaid-card) app is available here: [http://178.62.51.156
+](http://178.62.51.156) 
 
 ## Requirements
 - [docker](https://docs.docker.com/)
