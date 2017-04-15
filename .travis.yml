@@ -15,8 +15,9 @@ before_install:
   - eval "$(ssh-agent -s)"
   - chmod 600 /tmp/deploy_rsa
   - ssh-add /tmp/deploy_rsa
-  - docker-machine create --driver generic --generic-ip-address 178.62.51.156 --generic-ssh-user root simple-prepaid-card
-  - eval "$(docker-machine env simple-prepaid-card)"
+#  - docker-machine create --driver generic --generic-ip-address 178.62.51.156 --generic-ssh-user root simple-prepaid-card
+#  - eval "$(docker-machine env simple-prepaid-card)"
 
 script:
-  - make deploy
+   - echo "Deploy"
+#  - make deploy
